@@ -1,25 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <aside class="col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ $user->name }} ({{ $user->hometeam }},{{ $user->codingteam }})</h3>
-                </div>
-                <div class="panel-body">
-                <img class="media-object img-rounded img-responsive" src="{{ Gravatar::src($user->name, 500) }}" alt="">
-                </div>
-            </div>
-        </aside>
-        <div class="col-xs-8">
-            <ul class="nav nav-tabs nav-justified">
-                <li><a href="/resources/views/profiles/myprofile">MyProfile</a></li>
-                <li><a href="#">Like</a></li>
-                <li><a href="#">Future</a></li>
-                <li><a href="#">ズッ友</a></li>
-            </ul>
-            <div class="form-group">
+
+
+ 
+ 
+   <div class="form-group">
         私は
         {!! Form::date('birthday', \Carbon\Carbon::now()) !!}
         生まれで、出身地は
@@ -56,6 +42,14 @@
         {!! Form::label('rank3', '第三位:') !!}
         {!! Form::text('rank3') !!}
         </div>
+        
+        <div class="form-group">
+            {!! Form::label('content', 'その他:') !!}
+            {!! Form::text('content', null, ['class' => 'form-control']) !!}
         </div>
-    </div>
+
+        {!! Form::submit('更新', ['class' => 'btn btn-default']) !!}
+
+    
+        
 @endsection
