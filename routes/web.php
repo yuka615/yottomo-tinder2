@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 });
 
-Route::get('/resources/views/profiles/myprofile', function () {
-    return view('/profiles/myprofile');
-});
+
+Route::post('profiles/{name}', 'ProfilesController@store')->name('profiles.store');
+Route::get('profiles/{name}', 'ProfilesController@edit')->name('profiles.edit');
+Route::put('profiles/{name}', 'ProfilesController@update')->name('profiles.update');
+Route::get('profiles/{name}', 'ProfilesController@show')->name('profiles.show');

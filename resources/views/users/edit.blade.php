@@ -5,10 +5,10 @@
         <aside class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ $user->name }} ({{ $user->hometeam }},{{ $user->codingteam }})</h3>
+                    
                 </div>
                 <div class="panel-body">
-                <img class="media-object img-rounded img-responsive" src="{{ Gravatar::src($user->name, 500) }}" alt="">
+               
                 </div>
             </div>
         </aside>
@@ -19,8 +19,8 @@
                 <li><a href="#">Future</a></li>
                 <li><a href="#">ズッ友</a></li>
             </ul>
-            
-            
+        
+        
         <div class="form-group">
             私は
             {!! Form::date('birthday', \Carbon\Carbon::now()) !!}
@@ -58,12 +58,11 @@
             {!! Form::label('rank3', '第三位:') !!}
             {!! Form::text('rank3') !!}
         </div>
-         <!--button-->
-        {{ Form::button('<span class="glyphicon glyphicon-refresh"> 編集</span>', array('class'=>'btn btn-info', 'type'=>'submit')) }}
+        
+        <!--button-->
+        {{ Form::button('<span class="glyphicon glyphicon-refresh"> 更新</span>', array('class'=>'btn btn-info', 'type'=>'submit')) }}
+   
         </div>
     </div>
-     
-            
-        </div>
-    </div>
+   
 @endsection
