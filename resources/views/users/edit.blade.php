@@ -5,10 +5,10 @@
         <aside class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    
+                    <h3 class="panel-title">{{ $user->name }} ({{ $user->hometeam }},{{ $user->codingteam }})</h3>
                 </div>
                 <div class="panel-body">
-               
+                  <img class="media-object img-rounded img-responsive" src="{{ Gravatar::src($user->name, 500) }}" alt="">
                 </div>
             </div>
         </aside>
@@ -20,9 +20,10 @@
                 <li><a href="#">ズッ友</a></li>
             </ul>
         
-        
+        {!! Form::model($user, ['route' => ['profiles.update', $user]]) !!} 
         <div class="form-group">
-            私は
+             {!! Form::text('name') !!}
+            は
             {!! Form::date('birthday', \Carbon\Carbon::now()) !!}
             生まれで、出身地は
             {!! Form::text('birthplace') !!}
@@ -63,6 +64,7 @@
         {{ Form::button('<span class="glyphicon glyphicon-refresh"> 更新</span>', array('class'=>'btn btn-info', 'type'=>'submit')) }}
    
         </div>
+    {!! Form::close() !!}
     </div>
    
 @endsection

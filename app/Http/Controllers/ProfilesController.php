@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Profile;
+use App\User;
 
 class ProfilesController extends Controller
 {
@@ -53,23 +53,23 @@ class ProfilesController extends Controller
             'rank3' => 'max:191', 
         ]); 
         
-        $profile = new Profile;
-        $profile->content = $request->content;
-        $profile->name = $request->name;
-        $profile->nickname = $request->nickname;
-        $profile->birthday = $request->birthday;
-        $profile->gender = $request->gender;
-        $profile->birthplace = $request->birthplace;
-        $profile->character1 = $request->character1;
-        $profile->character2 = $request->character2;
-        $profile->hobby = $request->hobby;
-        $profile->charmpoint = $request->charmpoint;
-        $profile->dream = $request->dream;
-        $profile->app = $request->app;
-        $profile->rank1 = $request->rank1;
-        $profile->rank2 = $request->rank2;
-        $profile->rank3 = $request->rank3;
-        $profile->save();
+        $user = new User;
+        $user->content = $request->content;
+        $user->name = $request->name;
+        $user->nickname = $request->nickname;
+        $user->birthday = $request->birthday;
+        $user->gender = $request->gender;
+        $user->birthplace = $request->birthplace;
+        $user->character1 = $request->character1;
+        $user->character2 = $request->character2;
+        $user->hobby = $request->hobby;
+        $user->charmpoint = $request->charmpoint;
+        $user->dream = $request->dream;
+        $user->app = $request->app;
+        $user->rank1 = $request->rank1;
+        $user->rank2 = $request->rank2;
+        $user->rank3 = $request->rank3;
+        $user->save();
          
          return redirect('/');
     }
@@ -82,10 +82,10 @@ class ProfilesController extends Controller
      */
     public function show($name)
     {
-         $profile = Profile::find($name);
+         $user = User::find($name);
 
         return view('users.show', [
-            'profile' => $profile,
+            'user' => $user,
         ]);
     }
 
@@ -97,10 +97,10 @@ class ProfilesController extends Controller
      */
     public function edit($name)
     {
-        $profile = Profile::find($name);
+        $user = User::find($name);
 
         return view('users.edit', [
-            'profile' => $profile,
+            'user' => $user,
         ]);
     }
 
@@ -130,26 +130,28 @@ class ProfilesController extends Controller
             'rank2' => 'max:191',
             'rank3' => 'max:191',
          ]);
-         
-        $profile = Profile::find($name);
-        $profile->content = $request->content;
-        $profile->name = $request->name;
-        $profile->nickname = $request->nickname;
-        $profile->birthday = $request->birthday;
-        $profile->gender = $request->gender;
-        $profile->birthplace = $request->birthplace;
-        $profile->character1 = $request->character1;
-        $profile->character2 = $request->character2;
-        $profile->hobby = $request->hobby;
-        $profile->charmpoint = $request->charmpoint;
-        $profile->dream = $request->dream;
-        $profile->app = $request->app;
-        $profile->rank1 = $request->rank1;
-        $profile->rank2 = $request->rank2;
-        $profile->rank3 = $request->rank3;
-        $profile->save();
-     
-         return redirect('/');
+        
+        $user = User::find($name);
+        $user->content = $request->content;
+        $user->name = $request->name;
+        $user->nickname = $request->nickname;
+        $user->birthday = $request->birthday;
+        $user->gender = $request->gender;
+        $user->birthplace = $request->birthplace;
+        $user->character1 = $request->character1;
+        $user->character2 = $request->character2;
+        $user->hobby = $request->hobby;
+        $user->charmpoint = $request->charmpoint;
+        $user->dream = $request->dream;
+        $user->app = $request->app;
+        $user->rank1 = $request->rank1;
+        $user->rank2 = $request->rank2;
+        $user->rank3 = $request->rank3;
+        $user->save();
+    
+        return view('users.show', [
+            'user' => $user,
+        ]);
     }
 
     /**

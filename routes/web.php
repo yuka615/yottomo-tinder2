@@ -29,7 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-Route::post('profiles/{name}', 'ProfilesController@store')->name('profiles.store');
-Route::get('profiles/{name}', 'ProfilesController@edit')->name('profiles.edit');
-Route::put('profiles/{name}', 'ProfilesController@update')->name('profiles.update');
-Route::get('profiles/{name}', 'ProfilesController@show')->name('profiles.show');
+Route::post('profiles/{name}/store', 'ProfilesController@store')->name('profiles.store');
+Route::post('profiles/{name}/edit', 'ProfilesController@edit')->name('profiles.edit');
+Route::post('profiles/{name}/update', 'ProfilesController@update')->name('profiles.update');
+Route::get('profiles/{name}/show', 'ProfilesController@show')->name('profiles.show');
+

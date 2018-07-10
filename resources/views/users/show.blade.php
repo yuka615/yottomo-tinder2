@@ -14,16 +14,16 @@
         </aside>
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
-                <li><a href="/resources/views/profiles/myprofile">MyProfile</a></li>
+                <li><a href="#">MyProfile</a></li>
                 <li><a href="#">Like</a></li>
                 <li><a href="#">Future</a></li>
                 <li><a href="#">ズッ友</a></li>
             </ul>
-            
-            
+        {!! Form::model($user, ['route' => ['profiles.edit', $user]]) !!}   
         <div class="form-group">
-            私は
-            {!! Form::date('birthday', \Carbon\Carbon::now()) !!}
+            {!! Form::text('name') !!}
+            は
+            {!! Form::date('birthday') !!}
             生まれで、出身地は
             {!! Form::text('birthplace') !!}
             だよ。<br>
@@ -59,8 +59,9 @@
             {!! Form::text('rank3') !!}
         </div>
          <!--button-->
-        {{ Form::button('<span class="glyphicon glyphicon-refresh"> 編集</span>', array('class'=>'btn btn-info', 'type'=>'submit')) }}
+        {!! Form::button('<span class="glyphicon glyphicon-refresh"> 編集</span>', array('class'=>'btn btn-info', 'type'=>'submit')) !!}
         </div>
+        {!! Form::close() !!}
     </div>
      
             
